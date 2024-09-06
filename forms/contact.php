@@ -39,7 +39,7 @@
    
   //echo $contact->send();
 
- mail($_POST['email'],$_POST['subject'],$_POST['message']); 
+ // mail($_POST['email'],$_POST['subject'],$_POST['message']); 
 
     // // Retrieve form data
     // $name = $_POST['name'];
