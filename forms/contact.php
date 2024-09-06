@@ -36,6 +36,29 @@
   // $contact->add_message( $_POST['name'], 'From');
   // $contact->add_message( $_POST['email'], 'Email');
   // $contact->add_message( $_POST['message'], 'Message', 10);
-  mail($_POST['email'],$_POST['subject'],$_POST['message']);    
+   
   //echo $contact->send();
+
+ // mail($_POST['email'],$_POST['subject'],$_POST['message']); 
+
+    // Retrieve form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    // Sanitize inputs
+    $name = htmlspecialchars($name);
+    $email = htmlspecialchars($email);
+    $subject = htmlspecialchars($subject);
+    $message = htmlspecialchars($message);
+
+    // Construct the mailto link
+    $mailto = "mailto:" . $email . "?subject=" . urlencode($subject) . "&body=" . urlencode("Hello $name,\n\n$message");
+
+    // Redirect the user to the mailto link
+    header("Location: $mailto");
+
+    // Stop the script
+    exit();
 ?>
